@@ -1,6 +1,9 @@
 name: Snap
 
 on:
+  # Runs at 10:00 UTC every day
+  schedule:
+    - cron:  '0 10 * * *'
   workflow_dispatch:
 
 jobs:
