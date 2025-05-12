@@ -65,17 +65,13 @@ parts:
       - -*
 
   ghostty:
-    source: https://github.com/ghostty-org/ghostty.git
-    source-tag: "tip"
+    source: https://github.com/ghostty-org/ghostty/releases/download/tip/ghostty-source.tar.gz
     after: [zig]
     plugin: nil
     build-attributes: [enable-patchelf]
     build-packages:
-      - blueprint-compiler
       - libgtk-4-dev
       - libadwaita-1-dev
-      # TODO: Add when the Snap is updated to Ubuntu 24.10+
-      # - gtk4-layer-shell
       - libxml2-utils
       - git
       - patchelf
@@ -83,8 +79,8 @@ parts:
     override-pull: |
       craftctl default
       patch -p1 < $SNAPCRAFT_PROJECT_DIR/snap/local/patches/env_cleanup.patch
+      craftctl set version=tip-$(date '+%Y%m%d')
     override-build: |
-      craftctl set version=$(git describe --abbrev=8)-$(date '+%Y%m%d')
       $CRAFT_PART_SRC/../../zig/src/zig build -Dpatch-rpath=\$ORIGIN/../usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR:/snap/core24/current/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR -Doptimize=ReleaseFast
       cp -rp zig-out/* $CRAFT_PART_INSTALL/
       # Install libgtk4-layer-shell.so
