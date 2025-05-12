@@ -81,7 +81,7 @@ parts:
       patch -p1 < $SNAPCRAFT_PROJECT_DIR/snap/local/patches/env_cleanup.patch
       craftctl set version=tip-$(date '+%Y%m%d')
     override-build: |
-      $CRAFT_PART_SRC/../../zig/src/zig build -Dpatch-rpath=\$ORIGIN/../usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR:/snap/core24/current/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR -Doptimize=ReleaseFast
+      $CRAFT_PART_SRC/../../zig/src/zig build -Dpatch-rpath=\$ORIGIN/../usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR:/snap/core24/current/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR -Doptimize=ReleaseFast -Dcpu=baseline
       cp -rp zig-out/* $CRAFT_PART_INSTALL/
       # Install libgtk4-layer-shell.so
       mkdir -p $CRAFT_PART_INSTALL/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR
