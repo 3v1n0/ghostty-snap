@@ -81,7 +81,7 @@ parts:
 
   ghostty:
     source: https://github.com/ghostty-org/ghostty/releases/download/tip/ghostty-source.tar.gz
-    after: [zig]
+    after: [zig, ncurses]
     plugin: nil
     build-attributes: [enable-patchelf]
     build-packages:
