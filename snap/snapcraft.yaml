@@ -19,7 +19,7 @@ platforms:
 
 apps:
   ghostty:
-    command: bin/ghostty --launched-from=desktop
+    command: bin/ghostty
     command-chain: [bin/launcher]
     completer: share/bash-completion/completions/ghostty.bash
     desktop: share/applications/com.mitchellh.ghostty.desktop
