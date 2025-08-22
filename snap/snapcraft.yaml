@@ -115,6 +115,7 @@ parts:
       - libglib2.0-0t64
       - libgtk-4-1
       - libgtk-4-media-gstreamer
+      - libgtksourceview-5-0
       - ibus-gtk4
       - libpciaccess0
       - libtinfo6
