@@ -99,7 +99,9 @@ parts:
 
     override-pull: |
       craftctl default
-      patch -p1 < $SNAPCRAFT_PROJECT_DIR/snap/local/patches/env_cleanup.patch
+      for patch in "$SNAPCRAFT_PROJECT_DIR"/snap/local/patches/*.patch; do
+        patch --verbose -p1 < "$patch"
+      done
       craftctl set version=tip-$(date '+%Y%m%d')
     override-build: |
       # TODO: Remove -fno-sys=gtk4-layer-shell when we upgrade to a version that packages it Ubuntu 24.10+
