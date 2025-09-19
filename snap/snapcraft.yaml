@@ -88,6 +88,7 @@ parts:
     build-packages:
       - libgtk-4-dev
       - libadwaita-1-dev
+      - libapparmor-dev
       - libxml2-utils
       - git
       - patchelf
